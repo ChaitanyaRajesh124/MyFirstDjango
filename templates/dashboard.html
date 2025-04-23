@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <h1>
+        Dashboard
+    </h1>
+    &nbsp;
+    <table class = "table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>Age</th>
+            <th>
+                URL
+            </th>
+            
+        </tr>
+
+        {% for customer in customers %}
+        <tr>
+            <td>
+                {{customer.name}}
+            </td>
+            <td>
+                {{customer.age}}
+            </td>
+            <td>
+                <a href = " {% url 'customer' customer.id %}">
+                    View Orders
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'home' %}">
+        <button type = 'button' class = 'btn btn-success'>
+            Home Window
+        </button>
+    </a>
+    
+</body>
+{% endblock %}
+</html>
+
